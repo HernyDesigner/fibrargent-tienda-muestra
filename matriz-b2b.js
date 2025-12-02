@@ -183,17 +183,28 @@ function updateCartPanel(discount, totalUnits) {
     // Cálculos Finales Footer
     let grandTotal = grandSubtotal;
     let discountAmount = 0;
+    let percentageVal = 0;
+
+    // Reiniciamos estilo a Gris (como el de diversidad) por defecto
+    discountRow.style.color = '#999'; 
+    discountRow.style.fontWeight = '400';
 
     if (discount) {
+        percentageVal = discount.percentage;
         discountAmount = grandSubtotal * (discount.percentage / 100);
         grandTotal = grandSubtotal - discountAmount;
         
-        discountRow.style.display = 'flex';
-        discountPercentEl.textContent = discount.percentage + '%';
-        discountAmountEl.textContent = '- ' + formatCurrency(discountAmount);
-    } else {
-        discountRow.style.display = 'none';
-    }
+        // Si hay descuento: Texto Verde y Negrita
+        discountRow.style.color = '#28a745';
+        discountRow.style.fontWeight = '600';
+    } 
+
+    // Actualizamos SIEMPRE los textos (incluso si es 0%)
+    discountPercentEl.textContent = percentageVal + '%';
+    discountAmountEl.textContent = '- ' + formatCurrency(discountAmount);
+    
+    // Nos aseguramos que siempre se vea flex
+    discountRow.style.display = 'flex';
 
     subtotalEl.textContent = formatCurrency(grandSubtotal);
     totalEl.textContent = formatCurrency(grandTotal);
