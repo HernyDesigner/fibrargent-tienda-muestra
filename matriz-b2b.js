@@ -6,28 +6,28 @@ const products = {
         unitPrice: 26350.29, 
         step: 10,
         packLabel: 'Paquete x 10 unid.',
-        image: 'https://via.placeholder.com/70x70/e0e0e0/999999?text=IMG' 
+        image: 'https://darkgrey-porpoise-119211.hostingersite.com/wp-content/uploads/2025/10/almohada-dubella-soft-01.jpg' 
     },
     '070x044': { 
         name: 'Alma - 070x044 cm',
         unitPrice: 31057.31, 
         step: 10,
         packLabel: 'Paquete x 10 unid.',
-        image: 'https://via.placeholder.com/70x70/e0e0e0/999999?text=IMG'
+        image: 'https://darkgrey-porpoise-119211.hostingersite.com/wp-content/uploads/2025/10/almohada-dubella-soft-01.jpg' 
     },
     '070x050': { 
         name: 'Alma - 070x050 cm',
         unitPrice: 34821.25, 
         step: 6,
         packLabel: 'Paquete x 6 unid.',
-        image: 'https://via.placeholder.com/70x70/e0e0e0/999999?text=IMG'
+        image: 'https://darkgrey-porpoise-119211.hostingersite.com/wp-content/uploads/2025/10/almohada-dubella-soft-01.jpg' 
     },
     '080x040': { 
         name: 'Alma - 080x040 cm',
         unitPrice: 24076.84, 
         step: 10,
         packLabel: 'Paquete x 10 unid.',
-        image: 'https://via.placeholder.com/70x70/e0e0e0/999999?text=IMG'
+        image: 'https://darkgrey-porpoise-119211.hostingersite.com/wp-content/uploads/2025/10/almohada-dubella-soft-01.jpg' 
     }
 };
 
@@ -109,14 +109,14 @@ function updateProductRows(discount) {
             if (discount) {
                 const discountedTotal = subtotal * (1 - discount.percentage / 100);
                 wrapper.innerHTML = `
-                    <div class="row-total discounted">${formatCurrency(subtotal)}</div>
-                    <div class="row-total final-price">${formatCurrency(discountedTotal)} <span class="discount-badge">-${discount.percentage}%</span></div>
+                    <div class="row-total discounted">-${formatCurrency(subtotal)} <span class="discount-badge">-${discount.percentage}%</span></div>
+                    <div class="row-total final-price">${formatCurrency(discountedTotal)} </div>
                 `;
             } else {
                 wrapper.innerHTML = `<div class="row-total">${formatCurrency(subtotal)}</div>`;
             }
         } else {
-            wrapper.innerHTML = `<div class="row-total" style="color:#ddd">$ 0,00</div>`;
+            wrapper.innerHTML = `<div class="row-total" style="color:#999">$ 0,00</div>`;
         }
     });
 }
@@ -149,23 +149,23 @@ function updateCartPanel(discount, totalUnits) {
             cartHTML += `
                 <div class="cart-item">
                     <img src="${product.image}" alt="Producto" class="cart-item-img">
-                    
-                    <div class="cart-item-details">
-                        <span class="cart-item-title">${product.name}, ${product.packLabel}</span>
-                        <span class="cart-item-price">${formatCurrency(itemSubtotal)}</span>
-                    </div>
-
-                    <div class="cart-item-actions">
-                        <button class="btn-remove-item" onclick="removeItem('${size}')" title="Eliminar">
-                            🗑️
-                        </button>
-                        
-                        <div class="mini-qty-controls">
-                            <button class="mini-qty-btn" onclick="updateQty('${size}', -${product.step})">-</button>
-                            <input type="text" class="mini-qty-input" value="${qty}" readonly>
-                            <button class="mini-qty-btn" onclick="updateQty('${size}', ${product.step})">+</button>
+                    <div> 
+                        <div class="cart-item-details">
+                            <span class="cart-item-title">${product.name}, ${product.packLabel}</span>
+                            <button class="btn-remove-item" onclick="removeItem('${size}')" title="Eliminar">
+                                <i class="bi bi-trash3-fill"></i>
+                            </button>
                         </div>
-                    </div>
+
+                        <div class="cart-item-actions">
+                            <span class="cart-item-price">${formatCurrency(itemSubtotal)}</span>
+                            <div class="mini-qty-controls">
+                                <button class="mini-qty-btn" onclick="updateQty('${size}', -${product.step})">-</button>
+                                <input type="text" class="mini-qty-input" value="${qty}" readonly>
+                                <button class="mini-qty-btn" onclick="updateQty('${size}', ${product.step})">+</button>
+                            </div>
+                        </div>
+                    </div>    
                 </div>
             `;
         }
@@ -213,4 +213,36 @@ function updateCartPanel(discount, totalUnits) {
 // Inicializar al cargar
 document.addEventListener('DOMContentLoaded', () => {
     updateUI();
+});
+
+
+/* Lógica de Pestañas (Tabs) */
+document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.tabs.wc-tabs li a');
+    const panels = document.querySelectorAll('.woocommerce-Tabs-panel');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // 1. Quitar clase active de todos los tabs y paneles
+            document.querySelectorAll('.tabs.wc-tabs li').forEach(li => li.classList.remove('active'));
+            panels.forEach(panel => {
+                panel.style.display = 'none';
+                panel.classList.remove('active');
+            });
+
+            // 2. Activar el tab clickeado
+            const parentLi = tab.parentElement;
+            parentLi.classList.add('active');
+
+            // 3. Mostrar el panel correspondiente
+            const targetId = tab.getAttribute('href').substring(1); // quitar el #
+            const targetPanel = document.getElementById(targetId);
+            if (targetPanel) {
+                targetPanel.style.display = 'block';
+                targetPanel.classList.add('active');
+            }
+        });
+    });
 });
