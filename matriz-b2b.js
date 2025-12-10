@@ -130,6 +130,8 @@ function updateCartPanel(discount, totalUnits) {
     const discountAmountEl = document.getElementById('cart-discount-amount');
     const totalEl = document.getElementById('cart-total');
     const cartCountEl = document.getElementById('cart-count');
+    const headerCartCountEl = document.getElementById('header-cart-count'); 
+
 
     let cartHTML = '';
     let grandSubtotal = 0;
@@ -173,6 +175,13 @@ function updateCartPanel(discount, totalUnits) {
 
     // Actualizar contador del header (número de líneas de items)
     cartCountEl.textContent = itemsCount;
+
+    if(headerCartCountEl) {
+        headerCartCountEl.textContent = itemsCount;
+        
+        // Opcional: Ocultar la pelotita si es 0
+        headerCartCountEl.style.display = itemsCount > 0 ? 'flex' : 'none';
+    }
 
     if (!hasItems) {
         cartContainer.innerHTML = '<p class="empty-cart-msg">Tu carrito está vacío.</p>';

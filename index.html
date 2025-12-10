@@ -23,7 +23,14 @@
                     </div>
                     <nav class="main-nav">
                         <a href="index.html">Inicio</a>
-                        <a href="#" class="active">Mi Carrito</a>
+                        <a href="#" class="nav-text">Mi Carrito</a>
+                        <!-- Icono + Badge para móvil (oculto por defecto) -->
+                        <span class="mobile-cart-wrapper">
+                            <!-- Icono SVG de carrito -->
+                            <i class="bi bi-cart2 cart-icon-svg" style="font-size: 1.25rem;"></i>
+                            <!-- La pelotita roja (Badge) -->
+                            <span id="header-cart-count" class="cart-badge">0</span>
+                        </span>
                     </nav>
                 </div>
             </header>
@@ -137,9 +144,7 @@
                     </div>
 
                 </div>
-            </div>  
-
-            
+            </div>
 
             <footer class="site-footer">
                 <div class="footer-inner">

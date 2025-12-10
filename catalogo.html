@@ -23,7 +23,14 @@
                     </div>
                     <nav class="main-nav">
                         <a href="index.html">Inicio</a>
-                        <a href="#" class="active">Mi Carrito</a>
+                        <a href="#" class="nav-text">Mi Carrito</a>
+                        <!-- Icono + Badge para móvil (oculto por defecto) -->
+                        <span class="mobile-cart-wrapper">
+                            <!-- Icono SVG de carrito -->
+                            <i class="bi bi-cart2 cart-icon-svg" style="font-size: 1.25rem;"></i>
+                            <!-- La pelotita roja (Badge) -->
+                            <span id="header-cart-count" class="cart-badge">0</span>
+                        </span>
                     </nav>
                 </div>
             </header>
@@ -57,7 +64,7 @@
                                 <div class="variant-row">
                                     <div class="variant-info">
                                         <button class="size-button">070x040 cm</button>
-                                        <p class="label-text" align="center">MEDIDAS</p>
+                                        <p class="label-text">MEDIDAS</p>
                                     </div>
                                     <div class="variant-controls">
                                         <div class="quantity-controls">
@@ -65,7 +72,7 @@
                                             <input type="number" class="qty-input" id="qty-070x040" value="0" min="0" step="10" onchange="validateAndCalculate('070x040', 10)">
                                             <button class="qty-btn" onclick="updateQty('070x040', 10)">+</button>
                                         </div>
-                                        <p class="label-text" align="center">CANTIDAD</p>
+                                        <p class="label-text">CANTIDAD</p>
                                     </div>    
                                     <div class="variant-total" id="total-wrapper-070x040">
                                         <div class="row-total" id="total-070x040">$ 0,00</div>
@@ -81,7 +88,7 @@
                                 <div class="variant-row">
                                     <div class="variant-info">
                                         <button class="size-button">070x044 cm</button>
-                                        <p class="label-text" align="center">MEDIDAS</p>
+                                        <p class="label-text">MEDIDAS</p>
                                     </div>
                                     <div class="variant-controls">
                                         <div class="quantity-controls">
@@ -89,7 +96,7 @@
                                             <input type="number" class="qty-input" id="qty-070x044" value="0" min="0" step="10" onchange="validateAndCalculate('070x044', 10)">
                                             <button class="qty-btn" onclick="updateQty('070x044', 10)">+</button>
                                         </div>
-                                        <p class="label-text" align="center">CANTIDAD</p>
+                                        <p class="label-text">CANTIDAD</p>
                                     </div>
                                     <div class="variant-total" id="total-wrapper-070x044">
                                         <div class="row-total" id="total-070x044">$ 0,00</div>
@@ -105,7 +112,7 @@
                                 <div class="variant-row">
                                     <div class="variant-info">
                                         <button class="size-button">070x050 cm</button>
-                                        <p class="label-text" align="center">MEDIDAS</p>
+                                        <p class="label-text">MEDIDAS</p>
                                     </div>
                                     <div class="variant-controls">
                                         <div class="quantity-controls">
@@ -113,7 +120,7 @@
                                             <input type="number" class="qty-input" id="qty-070x050" value="0" min="0" step="6" onchange="validateAndCalculate('070x050', 6)">
                                             <button class="qty-btn" onclick="updateQty('070x050', 6)">+</button>
                                         </div>
-                                        <p class="label-text" align="center">CANTIDAD</p>
+                                        <p class="label-text">CANTIDAD</p>
                                     </div>   
                                     <div class="variant-total" id="total-wrapper-070x050">
                                         <div class="row-total" id="total-070x050">$ 0,00</div>
@@ -129,7 +136,7 @@
                                 <div class="variant-row">
                                     <div class="variant-info">
                                         <button class="size-button">080x040 cm</button>
-                                        <p class="label-text" align="center">MEDIDAS</p>
+                                        <p class="label-text">MEDIDAS</p>
                                     </div>
                                     <div class="variant-controls">
                                         <div class="quantity-controls">
@@ -137,7 +144,7 @@
                                             <input type="number" class="qty-input" id="qty-080x040" value="0" min="0" step="10" onchange="validateAndCalculate('080x040', 10)">
                                             <button class="qty-btn" onclick="updateQty('080x040', 10)">+</button>
                                         </div>
-                                        <p class="label-text" align="center">CANTIDAD</p>
+                                        <p class="label-text">CANTIDAD</p>
                                     </div>
                                     <div class="variant-total" id="total-wrapper-080x040">
                                         <div class="row-total" id="total-080x040">$ 0,00</div>

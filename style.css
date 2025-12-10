@@ -12,12 +12,13 @@ body {
     background-color: #f5f5f5; /* Fondo gris claro para destacar las tarjetas */
     margin: 0;
     padding: 0;
-    /* overflow-x: hidden; Evita scroll horizontal */
+    overflow-x: hidden;/*  Evita scroll horizontal */
     background-color: #ffffff;
 }
 
 .header-container {
-    /* max-width: 1400px; Ancho amplio para que coincida con el layout */
+    max-width: 1400px; /*Ancho amplio para que coincida con el layout */
+    width: 100%;
     margin: 0 auto;
     padding: 0 40px;
     display: flex;
@@ -130,6 +131,10 @@ body {
 .variant-row-info{
     margin-bottom: 5px;
 }
+.variant-row-info .label-text{
+    margin-left: 0;
+    text-align: left;
+}
 
 .variant-row {
     display: grid;
@@ -149,6 +154,8 @@ body {
 
 .variant-row .label-text{
     margin-top: 5px;
+    margin-left: 35px;
+    text-align: left;
 }
 .pack-info {
     font-size: 11px;
@@ -174,6 +181,8 @@ body {
     font-size: 11px;
     color: #888;
     text-transform: uppercase;
+    margin-right: 35px;
+    text-align: right;
 }
 
 .label-text-featured {
@@ -611,54 +620,31 @@ body {
     padding: 20px;
     border-top: 1px solid #eee;
 }
+/* --- ESTILOS ICONO CARRITO MOBILE --- */
 
-/* --- RESPONSIVE --- */
-@media (max-width: 1100px) {
-    .product-header {
-        grid-template-columns: 1fr; /* Imagen arriba, info abajo */
-    }
-    .product-image {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1;
-    }
+/* Por defecto (Escritorio): Ocultamos el icono mobile */
+.mobile-cart-wrapper {
+    display: none;
 }
 
-@media (max-width: 968px) {
-    .header-container {
-        padding: 0 20px;
-    }
-
-    .variant-row {
-        grid-template-columns: 1fr 1fr;
-        row-gap: 15px;
-    }
-    .variant-total {
-        grid-column: 1 / -1;
-        text-align: center;
-        background: #f9f9f9;
-        padding: 10px;
-        margin-top: 5px;
-    }
-    .app-layout {
-        grid-template-columns: 1fr; /* Una sola columna */
-    }
-    
-    .cart-sidebar {
-        height: auto; /* Ya no es full height en móvil */
-        position: static;
-        border-top: 2px solid #0066cc; /* Separación visual en móvil */
-    }
-
-    .cart-items {
-        max-height: 400px; /* Volvemos a limitar altura en móvil */
-    }
-
-    .main-area {
-        border-right: none;
-    }
+/* Estilos de la pelotita (Badge) */
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: #dc3545; /* Rojo vibrante */
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    height: 18px;
+    min-width: 18px;
+    padding: 0 4px;
+    border-radius: 9px; /* Redondo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #fff; /* Pequeño borde blanco para separar del icono */
 }
-
 
 /*CÓDIGO PARA EL RESTO MAIN*/
 /* --- TABS WOOCOMMERCE --- */
@@ -856,28 +842,6 @@ body {
     border-radius: 4px;
     cursor: pointer;
 }
-
-/* Responsive para grid relacionada */
-@media (max-width: 1200px) {
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-@media (max-width: 768px) {
-    .woocommerce-tabs, .related.products {
-        padding: 0 20px 40px 20px;
-    }
-    .products-grid {
-        grid-template-columns: 1fr;
-    }
-    .footer-inner {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-}
-
-
 /* --- 1. AJUSTE IMAGEN PRINCIPAL --- */
 .product-image img {
     width: 100%;
@@ -910,4 +874,129 @@ body {
     height: 100%;
     object-fit: cover; /* Esto hace que la imagen llene el cuadrado (recortando sobrantes) */
     display: block;
+}
+
+/* Responsive para grid relacionada */
+@media (max-width: 768px) {
+    .woocommerce-tabs, .related.products {
+        padding: 0 20px 40px 20px;
+    }
+    /* .products-grid {
+        grid-template-columns: 1fr;
+    } */
+    /* .footer-inner {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    } */
+     .variant-row {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 15px;
+    }
+    .variant-total {
+        grid-column: 1 / -1;
+        text-align: center;
+        background: #f9f9f9;
+        padding: 10px;
+        margin-top: 5px;
+    }
+    
+}
+@media (max-width: 968px) {
+    .site-header{
+        position: sticky;
+        width: 100%;
+        top:0;
+        z-index: 11;
+    }
+    .header-container {
+        padding: 0 20px;
+    }
+    
+    .app-layout {
+        grid-template-columns: 1fr; /* Una sola columna */
+    }
+    
+    .cart-sidebar {
+        height: auto; /* Ya no es full height en móvil */
+        position: fixed;
+        border-top: 2px solid #0066cc; /* Separación visual en móvil */
+        bottom:0;
+        top:auto;
+        z-index: 11;
+        width: 100%;
+    }
+
+    .cart-items {
+        max-height: 400px; /* Volvemos a limitar altura en móvil */|
+    }
+    .main-area {
+        border-right: none;
+    }
+    .cart-summary-row,.cart-summary-row.diversity-text{
+        display: none !important;
+    }
+    .cart-footer-section {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .cart-notice-box,.cart-total-row span:first-child,.cart-items,.cart-header{
+        display: none;
+    }
+    .cart-total-row{
+        border-top: 0;
+        padding-top: 0;
+    }
+    .cart-total-row span#cart-total{
+        font-size: 18px;
+    }
+    .btn-checkout{
+        width:50%;
+        margin-top: 0;
+    }
+    .site-footer{
+        margin-bottom: 100px;
+    }
+    /* Ocultar el texto "Mi Carrito" */
+    .nav-text {
+        display: none;
+    }
+    /* Mostrar el contenedor del icono */
+    .mobile-cart-wrapper {
+        display: inline-block;
+        position: relative; /* Para posicionar la pelotita respecto a esto */
+        vertical-align: middle;
+    }
+    /* Ajustar el enlace para que no tenga márgenes raros */
+    .main-nav a.cart-link {
+        margin-left: 20px;
+        padding: 5px;
+        display: inline-flex;
+        align-items: center;
+    }
+    .cart-icon-svg {
+        stroke: #333; /* Color del carrito */
+        padding: 0 0 0 .5em;
+        bottom: 0.1em;
+        position: relative;
+    }
+    .quantity-controls{
+        margin: 0;
+    }
+}
+@media (max-width: 1100px) {
+    .product-header {
+        grid-template-columns: 1fr; /* Imagen arriba, info abajo */
+    }
+    .product-image {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+    }
+}
+@media (max-width: 1200px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
